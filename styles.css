@@ -1265,7 +1265,7 @@ footer {
   .hero .container {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 40px;
+    gap: 20px;
   }
 
   .hero-content {
@@ -1274,7 +1274,24 @@ footer {
 
   .hero-image {
     order: 1;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-image-container {
+    width: 100%;
+    height: auto;
+    max-width: 260px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .profile-image {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
   }
 
   .cta-group {
@@ -1296,34 +1313,32 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  /* Fix headline wrapping and alignment */
   .headline {
     font-size: 2rem;
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    word-wrap: break-word;
     word-break: keep-all;
+    overflow-wrap: break-word;
     hyphens: none;
+    text-align: center;
     width: 100%;
+    max-width: 100%;
   }
 
+  /* Ensure hero container fits on screen */
+  .hero .container {
+    padding: 0 15px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Adjust hero spacing */
   .hero {
     padding: 120px 0 60px;
     min-height: auto;
-  }
-
-  .hero .container {
-    padding: 0 15px;
-  }
-
-  .hero-image-container {
-    width: 100%;
-    height: auto;
-    max-width: 280px;
-    margin: 0 auto;
-  }
-
-  .profile-image {
-    width: 240px;
-    height: 240px;
   }
 
   .about {
@@ -1587,14 +1602,35 @@ footer {
     transform: scale(0.98);
     opacity: 0.9;
   }
+
+  /* Show mobile line breaks */
+  .mobile-break {
+    display: inline;
+  }
+  
+  /* Ensure hero content is properly centered and sized */
+  .hero-content {
+    transform: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
 }
 
 @media (max-width: 480px) {
   /* Fix for very small screens */
   .headline {
-    font-size: 1.8rem;
-    word-break: keep-all;
+    font-size: 1.7rem;
     line-height: 1.3;
+    text-align: center;
+    padding: 0;
+    max-width: 100%;
+  }
+  
+  .subheadline {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
   }
   
   .hero {
@@ -1825,4 +1861,49 @@ footer {
 .stagger-item {
   opacity: 0;
   transform: translateY(20px);
+}
+
+/* Hide mobile line breaks by default */
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 374px) {
+  /* iPhone SE and other very small screens */
+  .headline {
+    font-size: 1.5rem;
+    line-height: 1.25;
+    padding: 0 5px;
+  }
+  
+  .subheadline {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    padding: 0 5px;
+  }
+  
+  .profile-image {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .hero-image-container {
+    max-width: 220px;
+  }
+  
+  .floating-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  
+  .cta.primary {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+  
+  .social-proof p {
+    font-size: 0.85rem;
+    padding: 0 10px;
+  }
 } 
