@@ -214,6 +214,8 @@ function initCarousel() {
   const nextBtn = document.querySelector('.next');
   let currentSlide = [...dots].findIndex(dot => dot.classList.contains('active'));
   if (currentSlide === -1) currentSlide = 0;
+  let startX, endX;
+  const carousel = document.querySelector('.testimonial-carousel');
   
   function showSlide(index) {
     if (index < 0) index = slides.length - 1;
@@ -256,6 +258,25 @@ function initCarousel() {
       showSlide(currentSlide + 1);
     }
   }, 6000);
+
+  // Add touch swipe support for mobile
+  if (carousel) {
+    carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, false);
+    
+    carousel.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      
+      if (startX - endX > 50) {
+        // Swipe left - next slide
+        showSlide(currentSlide + 1);
+      } else if (endX - startX > 50) {
+        // Swipe right - previous slide
+        showSlide(currentSlide - 1);
+      }
+    }, false);
+  }
 }
 
 function initMobileMenu() {
@@ -386,6 +407,27 @@ window.addEventListener('DOMContentLoaded', () => {
     
     // Setup image modal functionality
     setupImageModal();
+
+    // Mobile-specific adjustments
+    if (window.innerWidth <= 768) {
+      // Optimize animations for mobile
+      document.querySelectorAll('img').forEach(img => {
+        img.loading = 'lazy';
+      });
+      
+      // Add active states for touch
+      document.querySelectorAll('.service-card, .stat-card, .faq-question').forEach(el => {
+        el.addEventListener('touchstart', () => {
+          el.classList.add('touch-active');
+        });
+        
+        el.addEventListener('touchend', () => {
+          setTimeout(() => {
+            el.classList.remove('touch-active');
+          }, 300);
+        });
+      });
+    }
 });
 
 // Close mobile menu when clicking a link

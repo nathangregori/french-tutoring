@@ -56,16 +56,28 @@ html {
 }
 
 body {
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
   background-color: var(--white);
+}
+
+/* Optimize clickable elements for touch */
+button, 
+a,
+.service-card,
+.testimonial-slide,
+.faq-question,
+.expand-btn {
+  touch-action: manipulation;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 img {
@@ -1207,6 +1219,17 @@ footer {
   .menu-toggle {
     display: block;
   }
+  
+  /* Smaller header for mobile */
+  .header {
+    height: 60px;
+  }
+  
+  /* Adjust logo size for mobile */
+  .logo img {
+    height: 45px;
+    width: auto;
+  }
 
   .nav-links {
     position: fixed;
@@ -1255,7 +1278,18 @@ footer {
   }
 
   .cta-group {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cta.primary {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .testimonial-mini {
+    margin-top: 15px;
   }
 
   .stats-grid {
@@ -1263,12 +1297,82 @@ footer {
   }
 
   .headline {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    word-break: keep-all;
+    hyphens: none;
+    width: 100%;
   }
 
+  .hero {
+    padding: 120px 0 60px;
+    min-height: auto;
+  }
+
+  .hero .container {
+    padding: 0 15px;
+  }
+
+  .hero-image-container {
+    width: 100%;
+    height: auto;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .profile-image {
+    width: 240px;
+    height: 240px;
+  }
+
+  .about {
+    padding: 60px 0;
+  }
+  
   .about-container {
     flex-direction: column;
     text-align: center;
+    gap: 30px;
+  }
+  
+  .about-avatar {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 20px;
+  }
+  
+  .about-avatar img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .language-badge {
+    width: 80px;
+    height: 80px;
+    bottom: 5px;
+    right: -5px;
+  }
+  
+  .badge-number {
+    font-size: 22px;
+  }
+  
+  .badge-text {
+    font-size: 10px;
+    max-width: 60px;
+  }
+  
+  .about-heading {
+    font-size: 28px;
+  }
+  
+  .about-text {
+    text-align: left;
+  }
+  
+  .expand-btn {
+    margin: 15px auto 0;
   }
 
   .social-icons {
@@ -1282,11 +1386,24 @@ footer {
   .testimonial-slides {
     flex-direction: column;
     gap: 20px;
+    margin: 0;
   }
 
   .testimonial-slide {
     flex: 0 0 100%;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .testimonial-image {
+    height: 160px;
+  }
+
+  .testimonials .section-title {
+    font-size: 1.6rem;
+    padding: 0 10px;
+    margin-bottom: 25px;
   }
 
   .footer-content {
@@ -1298,26 +1415,232 @@ footer {
     gap: 20px;
     text-align: center;
   }
-}
 
-/* Animation Classes */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
+  /* Better services section layout */
+  .services {
+    padding: 60px 0;
+  }
+  
+  .services-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .service-card {
+    width: 100%;
+    padding: 20px 15px;
+  }
+  
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+  
+  /* Better pricing section layout */
+  .pricing {
+    padding: 60px 0;
+  }
+  
+  .pricing-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .pricing-features {
+    padding-right: 0;
+  }
+  
+  .features-list li {
+    text-align: left;
+  }
+  
+  .pricing-card {
+    padding: 25px 20px;
+  }
+  
+  .price-amount {
+    font-size: 2.2rem;
+  }
+  
+  /* Better booking section layout */
+  .booking {
+    padding: 60px 0;
+  }
+  
+  .booking h2 {
+    font-size: 1.5rem;
+    padding: 0 15px;
+    margin-bottom: 25px;
+  }
+  
+  .booking .cta.primary {
+    max-width: 280px;
+  }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  /* Better footer layout */
+  footer {
+    padding: 40px 0 30px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .mini-logo img {
+    height: 50px;
+  }
+  
+  .copyright {
+    margin-top: 10px;
+    font-size: 0.75rem;
+  }
+  
+  .footer-social {
+    margin: 5px 0;
+  }
 
-.stagger-item {
-  opacity: 0;
-  transform: translateY(20px);
+  /* Optimize buttons and links for touch */
+  .cta, 
+  .nav-cta,
+  .nav-links a,
+  .service-card,
+  .dot,
+  .expand-btn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Make it easier to tap navigation items */
+  .nav-links {
+    gap: 25px;
+  }
+  
+  .nav-links a {
+    padding: 10px;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Smaller text for better mobile readability */
+  body {
+    font-size: 15px;
+  }
+  
+  /* More touch-friendly spacing */
+  section {
+    padding: 50px 0;
+  }
+  
+  /* Reduce motion for better performance */
+  .hero-image, .profile-image, .floating-icon {
+    transform: none !important;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Ensure proper spacing around content */
+  .container {
+    padding: 0 20px;
+  }
+  
+  /* Prevent text overflow */
+  h1, h2, h3, p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-word;
+    word-break: break-word;
+  }
+  
+  /* Adjust width of buttons for better touch */
+  .cta, .nav-cta, button.expand-btn {
+    padding: 12px 20px;
+  }
+
+  /* Touch feedback states */
+  .touch-active {
+    opacity: 0.8;
+    transform: scale(0.98);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .service-card.touch-active {
+    background-color: var(--light-gray);
+  }
+  
+  .stat-card.touch-active {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-question.touch-active {
+    color: var(--primary);
+  }
+  
+  .cta:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
 }
 
 @media (max-width: 480px) {
+  /* Fix for very small screens */
+  .headline {
+    font-size: 1.8rem;
+    word-break: keep-all;
+    line-height: 1.3;
+  }
+  
+  .hero {
+    padding: 100px 0 40px;
+  }
+  
+  /* Prevent floating icons from taking too much space */
+  .floating-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+  
+  .floating-icon.figma {
+    top: 10%;
+    right: -5%;
+  }
+  
+  .floating-icon.excel {
+    top: 30%;
+    left: -5%;
+  }
+  
+  /* Better social proof pill positioning */
+  .social-proof-pill {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    margin: 15px auto 0;
+    width: fit-content;
+    padding: 8px 15px;
+    font-size: 0.75rem;
+  }
+  
+  /* Better button and form sizing */
+  .cta {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+  
+  /* Prevent WhatsApp widget from covering content */
+  .container {
+    padding: 0 15px;
+    overflow: visible;
+  }
+  
   .cta-group {
     flex-direction: column;
   }
@@ -1343,8 +1666,9 @@ footer {
   }
 
   .hero-image-container {
-    width: 820px;
-    height: 420px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
   }
   
   .profile-image {
@@ -1484,4 +1808,21 @@ footer {
 
 .dot.active {
   background-color: var(--white);
+}
+
+/* Animation Classes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
 } 
